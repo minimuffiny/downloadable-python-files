@@ -1,0 +1,5 @@
+<!-- a basic structure -->
+<commands xmlns="https://commands.com/">
+  <command name="prank" logic="echo hahaha"/>
+  <command name="gong" logic="echo bell; mkdir bell"/>
+</commands>
