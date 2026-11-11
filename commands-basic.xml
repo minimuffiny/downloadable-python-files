@@ -9,4 +9,9 @@
   <command name="python-version" logic="python --version"/>
   <command name="make-notes" logic="mkdir notes"/>
   <command name="make-projects" logic="mkdir projects"/>
+  <command name="system-info" logic="python -c &quot;import json, platform; print(json.dumps({'os': platform.system(), 'release': platform.release(), 'architecture': platform.machine(), 'python': platform.python_version()}, indent=2))&quot;"/>
+  <command name="disk-usage" logic="python -c &quot;import shutil; u = shutil.disk_usage('.'); print('Total: {:.2f} GiB | Used: {:.2f} GiB | Free: {:.2f} GiB'.format(u.total / 2**30, u.used / 2**30, u.free / 2**30))&quot;"/>
+  <command name="find-python" logic="python -c &quot;from pathlib import Path; print('\n'.join(sorted(str(p) for p in Path('.').rglob('*.py') if p.is_file())) or 'No Python files found')&quot;"/>
+  <command name="hash-readme" logic="python -c &quot;import hashlib; from pathlib import Path; print(hashlib.sha256(Path('README.md').read_bytes()).hexdigest())&quot;"/>
+  <command name="file-report" logic="python -c &quot;import json; from pathlib import Path; print(json.dumps([{'name': p.name, 'bytes': p.stat().st_size} for p in sorted(Path('.').iterdir()) if p.is_file()], indent=2))&quot;"/>
 </commands>
